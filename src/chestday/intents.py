@@ -14,11 +14,9 @@ class ChestDayIntent(Intent):
     def handle(self, request, session):
         date = arrow.get(request['timestamp'])
 
-        timezone_offset = db.get_timezone_offset(session['user']['userId'])
+        timezone_difference = db.get_timezone_difference(session['user']['userId'])
 
-        if timezone_offset is not None:
-            timezone_difference = '+' if timezone_offset >= 0 else '-'
-            timezone_difference += '{:02d}:00'.format(abs(timezone_offset))
+        if timezone_difference is not None:
             date = date.to(timezone_difference)
 
         for day in DAYS:
@@ -40,7 +38,11 @@ class WhatTimeIsItIntent(Intent):
         # Work out the timezone offset
         user_hour, user_minute = map(int, user_time.split(':'))
 
-        timezone_offset = (user_hour - utc_hour) % 24
+        # TODO - may not work on the timezone day boundary...
+        timezone_offsets = {((utc_hour - i) % 24): -i for i in range(13)}
+        timezone_offsets.update({((utc_hour + i) % 24): i for i in range(13)})
+
+        timezone_offset = timezone_offsets[user_hour]
 
         # Store the offset for that user
         db.set_timezone_offset(session['user']['userId'], timezone_offset)

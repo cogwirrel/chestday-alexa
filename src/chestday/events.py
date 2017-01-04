@@ -16,7 +16,7 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
 
-    return build_response("Come at me bro, ask me what day it is.")
+    return build_response("Come at me bro, ask me what day it is. Tell me the time for more accurate results.")
 
 
 def on_intent(intent_request, session):
@@ -25,7 +25,7 @@ def on_intent(intent_request, session):
     print("on_intent requestId=" + intent_request['requestId'] +
           ", sessionId=" + session['sessionId'])
 
-    return IntentHandler().handle(intent_request)
+    return IntentHandler().handle(intent_request, session)
 
 
 def on_session_ended(session_ended_request, session):

@@ -1,6 +1,11 @@
 ChestDayIntent is it chest day
+ChestDayIntent if it's chest day
 ChestDayIntent what day is it
 ChestDayIntent what day is this
 ChestDayIntent to tell me the day
 ChestDayIntent what's today
 ChestDayIntent what's the day
+ChestDayIntent what I should train
+
+WhatTimeIsItIntent the time is {time}
+WhatTimeIsItIntent it's {time}

@@ -16,7 +16,7 @@ def main(event, context):
     function.
     """
     if (event['session']['application']['applicationId'] !=
-            "amzn1.ask.skill.67e2ec61-8f58-4bcb-b478-09645b6d15bf"):
+            "amzn1.ask.skill.98c3cf3f-96b6-4065-b6a9-22b1608e76af"):
         raise ValueError("Invalid Application ID")
 
     if event['session']['new']:

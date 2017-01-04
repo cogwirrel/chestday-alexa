@@ -19,13 +19,13 @@ class Day(object):
 
 class ChristmasDay(Day):
 
-    def is_today(date):
+    def is_today(self, date):
         return date.day == 25 and date.month == 12
 
-    def day():
+    def day(self):
         return "Christmas Day"
 
-    def quips():
+    def quips(self):
         return [
             "Do you even gift?",
             "I hope you got a bench for Christmas this year.",
@@ -34,13 +34,13 @@ class ChristmasDay(Day):
 
 class ArnoldsBirthday(Day):
 
-    def is_today(date):
+    def is_today(self, date):
         return date.day == 30 and date.month == 6
 
-    def day():
+    def day(self):
         return "Arnold's Birthday"
 
-    def quips():
+    def quips(self):
         return [
             "Happy Birthday Arnold!",
             "Train chest to wish Arnold many happy returns.",
@@ -50,13 +50,13 @@ class ArnoldsBirthday(Day):
 
 class ChestDay(Day):
 
-    def is_today(date):
+    def is_today(self, date):
         return date.format('dddd') == 'Monday'
 
-    def day():
+    def day(self):
         return "Chest Day"
 
-    def quips():
+    def quips(self):
         return [
             "Go train chest!",
             "What are you waiting for?!",
@@ -81,13 +81,13 @@ class ChestDay(Day):
 
 class AnyDay(Day):
 
-    def is_today(date):
+    def is_today(self, date):
         return True
 
-    def day():
+    def day(self):
         return "Not Chest Day"
 
-    def quips():
+    def quips(self):
         return [
             "Go train an inferior muscle group.",
             "Maybe train legs? ...Nah",

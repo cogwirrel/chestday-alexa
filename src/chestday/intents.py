@@ -19,12 +19,18 @@ class ChestDayIntent(Intent):
         if timezone_difference is not None:
             date = date.to(timezone_difference)
 
-        for day in DAYS:
-            if day.is_today(date):
-                return day.response()
+            for day in DAYS:
+                if day.is_today(date):
+                    return day.response()
 
-        # This should be handled, but just in case...
-        return AnyDay().response()
+            # This should be handled, but just in case...
+            return AnyDay().response()
+        else:
+            return build_response(
+                "Let me ask you something first. What's the time?",
+                reprompt_text="Tell me the time so I can be better at telling you when it's chest day.",
+                should_end_session=False
+            )
 
 
 class WhatTimeIsItIntent(Intent):
@@ -38,16 +44,16 @@ class WhatTimeIsItIntent(Intent):
         # Work out the timezone offset
         user_hour, user_minute = map(int, user_time.split(':'))
 
-        # TODO - may not work on the timezone day boundary...
-        timezone_offsets = {((utc_hour - i) % 24): -i for i in range(13)}
-        timezone_offsets.update({((utc_hour + i) % 24): i for i in range(13)})
+        # This works well enough, but may not work on the international date line, and will be wrong
+        # It's impossible to distinguish between UTC+13 and UTC-11, so it won't work in New Zealand daylight savings time
+        timezone_offsets = {((utc_hour + i) % 24): i for i in range(-12, 13)}
 
         timezone_offset = timezone_offsets[user_hour]
 
         # Store the offset for that user
         db.set_timezone_offset(session['user']['userId'], timezone_offset)
 
-        return build_response("Thanks, now I'll be better at telling you when it's chest day")
+        return ChestDayIntent().handle(request, session)
 
 
 class IntentHandler(object):

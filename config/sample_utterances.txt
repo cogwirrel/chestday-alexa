@@ -9,3 +9,4 @@ ChestDayIntent what I should train
 
 WhatTimeIsItIntent the time is {time}
 WhatTimeIsItIntent it's {time}
+WhatTimeIsItIntent {time}

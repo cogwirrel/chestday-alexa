@@ -16,7 +16,8 @@ def get_timezone_difference(user):
     result = _db().get_attributes(
         DomainName=DOMAIN,
         ItemName=user,
-        AttributeNames=['timezone_difference']
+        AttributeNames=['timezone_difference'],
+        ConsistentRead=True,
     )
 
     if 'Attributes' in result and len(result['Attributes']) > 0:

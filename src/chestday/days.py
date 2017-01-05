@@ -14,7 +14,7 @@ class Day(object):
     def response(self):
         day_name = self.day()
         quip = random.choice(self.quips())
-        return build_response("It's {day}, {quip}".format(day=day_name, quip=quip))
+        return build_response("It's {day}. {quip}".format(day=day_name, quip=quip))
 
 
 class ChristmasDay(Day):
@@ -29,7 +29,9 @@ class ChristmasDay(Day):
         return [
             "Do you even gift?",
             "I hope you got a bench for Christmas this year.",
-            "Christmas dinner hits all your macros."
+            "Christmas dinner hits all your macros.",
+            "Did you get a barbell for Christmas?",
+            "All I want for Christmas, is gains.",
         ]
 
 class ArnoldsBirthday(Day):
@@ -70,13 +72,10 @@ class ChestDay(Day):
             "Why aren't you under a barbell?!",
             "Go hard or go home!",
             "Train like a beast!",
-            "Why are you still looking at this?!",
+            "Why are you still talking to me?!",
             "Go own the bench!",
             "Cancel your date.",
             "Make Arnold proud!",
-            "Get pumped with a peakin' track!",
-            "Psych yourself up with the headphones below!",
-            "Get amped with the headphones below!"
         ]
 
 class AnyDay(Day):
@@ -96,9 +95,9 @@ class AnyDay(Day):
             "Just go home.",
             "Go back to bed.",
             "What's the point?",
-            "Shouldn't have taken your preworkout.",
-            "Guess it's biceps again.",
-            "Hang up your tank."
+            "You shouldn't have taken your preworkout.",
+            "I guess it's biceps again.",
+            "Hang up your tank.",
         ]
 
 # Priority ordered list of days

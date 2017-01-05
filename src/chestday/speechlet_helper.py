@@ -1,5 +1,5 @@
 
-def build_speechlet_response(output, title="chestday.com", reprompt_text=None, should_end_session=True):
+def build_speechlet_response(output, title="Chest Day", reprompt_text=None, should_end_session=True):
 
     reprompt_text = reprompt_text or output
 
@@ -23,7 +23,7 @@ def build_speechlet_response(output, title="chestday.com", reprompt_text=None, s
     }
 
 
-def build_response(output, title="chestday.com", reprompt_text=None, should_end_session=True, session_attributes=None):
+def build_response(output, title="Chest Day", reprompt_text=None, should_end_session=True, session_attributes=None):
     speechlet_response = build_speechlet_response(output, title, reprompt_text, should_end_session)
     return {
         'version': '1.0',
